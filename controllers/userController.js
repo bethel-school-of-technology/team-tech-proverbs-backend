@@ -5,9 +5,10 @@ const AppError = require('./../utils/appError');
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
   Object.keys(obj).forEach(el => {
-    if(allowedFields.includes(el)) newObj[el] = true;
-  })
-}
+    if (allowedFields.includes(el)) newObj[el] = obj[el];
+  });
+  return newObj;
+};
 
 exports.getAllUsers = catchAsync(async (req, res, next) => {
   const users = await User.find();
@@ -41,7 +42,10 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   });
 
   res.status(200).json({
-    status: 'success'
+    status: 'success',
+    data: {
+      user: updatedUser
+    }
   });
 });
 
