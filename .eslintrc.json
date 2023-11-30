@@ -42,7 +42,7 @@
         "optionalDependencies": false,
         "peerDependencies": false,
         "packageDir": "./", // Change this path to your project's root directory
-        "allow": ["nodemailer"]
+        "allow": ["express-rate-limit"]
       }
     ]
   }
