@@ -95,7 +95,8 @@ const tourSchema = new mongoose.Schema(
       description: {
         type: String
       }
-    },locations: {
+    },
+    locations: {
       type: {
         type: String,
         default: 'Point',
