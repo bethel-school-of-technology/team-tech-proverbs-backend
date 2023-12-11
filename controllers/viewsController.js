@@ -37,7 +37,7 @@ exports.getTour = catchAsync(async (req, res, next) => {
     .status(200)
     .set({
       'Content-Security-Policy':
-        "script-src 'self' https://api.mapbox.com; worker-src 'self' blob:"
+        "script-src 'self' https://api.mapbox.com https://js.stripe.com/v3/; worker-src 'self' blob:"
     })
     .render('tour', {
       title: `${tour.name} Tour`,
