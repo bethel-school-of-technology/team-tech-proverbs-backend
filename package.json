@@ -1,5 +1,5 @@
 {
-  "name": "rwandatours",
+  "name": "Awesome tours",
   "version": "1.0.0",
   "description": "Tourism web app project",
   "main": "app.js",
@@ -11,7 +11,7 @@
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
     "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
   },
-  "author": "Ishimwe Kevin",
+  "author": "team-tech-proverbs",
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
