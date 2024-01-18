@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "Awesome tours",
+=======
+  "name": "awesometours",
+>>>>>>> 792b7135e2e430e73fa50e800bad78756b7b3d05
   "version": "1.0.0",
   "description": "Tourism web app project",
   "main": "app.js",
@@ -11,7 +15,11 @@
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js",
     "build:js": "parcel build ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
   },
+<<<<<<< HEAD
   "author": "team-tech-proverbs",
+=======
+  "author": "Tech Proverbs",
+>>>>>>> 792b7135e2e430e73fa50e800bad78756b7b3d05
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
