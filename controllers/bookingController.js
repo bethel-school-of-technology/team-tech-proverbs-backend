@@ -88,3 +88,15 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
     }
   });
 });
+exports.getUserBookings = catchAsync(async (req, res, next) => {
+  // Fetch bookings for the current user
+  const bookings = await Booking.find({ user: req.user.id });
+
+  res.status(200).json({
+    status: 'success',
+    results: bookings.length,
+    data: {
+      bookings
+    }
+  });
+});
