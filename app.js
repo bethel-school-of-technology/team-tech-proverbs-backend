@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
+const cors = require('cors');
+
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
@@ -14,6 +16,9 @@ const bookingRouter = require('./routes/bookingRoutes');
 const bookingController = require('./controllers/bookingController');
 
 const app = express();
+app.use(cors());
+app.options('*', cors());
+
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {
