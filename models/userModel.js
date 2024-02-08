@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 const validator = require('validator');
@@ -59,6 +60,20 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre('save', async function(next) {
+  const existingUserWithEmail = await User.findOne({ email: this.email });
+  const existingUserWithName = await User.findOne({ name: this.name });
+
+  if (existingUserWithEmail) {
+    const err = new Error('Email address is already in use.');
+    err.statusCode = 400;
+    return next(err);
+  }
+
+  if (existingUserWithName) {
+    const err = new Error('Name is already in use.');
+    err.statusCode = 400;
+    return next(err);
+  }
   // Only run this function if password was actually modified
   if (!this.isModified('password')) return next();
 
@@ -108,8 +123,6 @@ userSchema.methods.createPasswordResetToken = function() {
     .createHash('sha256')
     .update(resetToken)
     .digest('hex');
-
-  // console.log({ resetToken }, this.passwordResetToken);
 
   this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
 
