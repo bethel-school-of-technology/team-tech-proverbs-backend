@@ -7,7 +7,7 @@ const router = express.Router({ mergeParams: true });
 router.use(authController.protect);
 
 router.get('/checkout-session/:tourId', bookingController.getCheckoutSession);
-router.get('/my-tours', bookingController.getMyTours);
+// router.get('/my-tours', bookingController.getMyTours);
 
 router.use(authController.restrictTo('admin', 'lead-guide', 'user'));
 router.get('/', bookingController.getUserBookings);
