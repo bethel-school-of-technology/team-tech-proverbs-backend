@@ -13,8 +13,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
     mode: 'payment',
-    success_url: 'http://127.0.0.1:3004/api/v1/bookings',
-    cancel_url: 'http://127.0.0.1:3004/api/v1/tours/',
+    success_url: `http://localhost:4200/profile/my-tours`,
+    cancel_url: `http://localhost:4200/tourDetails/${tour.id}`,
     customer_email: req.user.email,
     client_reference_id: req.params.tourId,
     line_items: [
@@ -24,7 +24,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
           product_data: {
             name: `${tour.name} Tour`,
             description: tour.summary,
-            images: [`public/img/tours/${tour.imageCover}`]
+            images: [tour.imageCover]
           },
           unit_amount: tour.price * 100
         },
@@ -84,7 +84,7 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
     status: 'success',
     results: tours.length,
     data: {
-      data: tours
+      bookings: tours
     }
   });
 });
